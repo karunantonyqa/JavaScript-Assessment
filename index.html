@@ -19,51 +19,97 @@
     <input type="text" id="jsonText" value="JSON">
     <input type="text" id="formText" value="FORM"><br>
 
-    <select id="jsonSelect">
-        <option value="">---JSON---</option>
-        <option value="jsonmanipulation" id="jsonManChoice">JSON Manipulation</option>
-    </select>
-    
-    <select id="formSelect">
-        <option value="">---Forms---</option>
-        <option value="entryform" id="entryFormChoice">Entry Form</option>
-        <option value="formdata" id="formDataChoice">Form Data</option>
-    </select>
+
+    <div id="jsonDiv">
+    <ul>
+        
+        <li><a href="trainers.html" id="jsonManLink">JSON Manipulation</a></li>
+        
+    </ul>
+    </div>
+
+    <div id="formDiv">
+    <ul>
+        
+        <li><a href="entryform.html" id="entryFormLink">Entry Form</a> </li>
+        <li><a href="formdata.html" id="formDataLink">Form Data</a> </li>
+    </ul>
+    </div>
 
     <script>
-        
+        var entryFormLinkV = document.getElementById("formDataLink");
+        var formDataLinkV = document.getElementById("entryFormLink")
+        var jsonManLinkV = document.getElementById("jsonManLink");
+        var entryFormLinkV2 = document.getElementById("formDataLink");
+        var formDataLinkV2 = document.getElementById("entryFormLink")
+        var jsonManLinkV2 = document.getElementById("jsonManLink");
+        var star = "*"
         
         var isJsonHover = false;
         var isFormHover = false;
 
-        var jsonDrop = document.getElementById("jsonSelect");
-        var formDrop = document.getElementById("formSelect");
+        var jsonDrop = document.getElementById("jsonDiv");
+        var formDrop = document.getElementById("formDiv");
 
         jsonDrop.hidden = true;
         formDrop.hidden = true;
 
         var jsonTextB = document.getElementById("jsonText");
+        jsonTextB.style.border = "none";
         var formTextB = document.getElementById("formText");
+        formTextB.style.border = "none";
+
+
+
+
 
         jsonTextB.onmouseover = function(){
             jsonDrop.hidden = false;
+            jsonManLinkV.onmouseover = function(){
+                jsonManLinkV.style.backgroundColor = "yellow";
+                jsonManLinkV.innerHTML = "*" + jsonManLinkV.innerText;
+            }
+            jsonManLinkV.onmouseleave = function(){
+                jsonManLinkV.style.backgroundColor = "white";
+                
+            }
+            
             
         }
+        
 
         formTextB.onmouseover = function(){
             formDrop.hidden = false;
+
+            entryFormLinkV.onmouseover = function(){
+                entryFormLinkV.style.backgroundColor = "yellow";
+                entryFormLinkV.innerHTML = "*" + entryFormLinkV.innerText;
+            }
+            entryFormLinkV.onmouseleave = function(){
+                entryFormLinkV.style.backgroundColor = "white";
+            }
+
+            formDataLinkV.onmouseover = function(){
+                formDataLinkV.style.backgroundColor = "yellow";
+                formDataLinkV.innerHTML = "*" + formDataLinkV.innerText;
+            }
+            formDataLinkV.onmouseleave = function(){
+                formDataLinkV.style.backgroundColor = "white";
+            }
             
         }
 
         jsonTextB.onmouseleave = function(){
-            setTimeout(1000);
-            //jsonDrop.hidden = true;
-            
+            formTextB.onmouseenter = function(){
+                jsonDrop.hidden = true;
+            } 
         }
 
         formTextB.onmouseleave = function(){
-            //formDrop.hidden = true;
-            
+
+            jsonTextB.onmouseenter = function(){
+                formDrop.hidden = true;
+            }
         }
 
         
