@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Data Page</title>
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Main Page</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="entryform.html">Entry Form</a>
+        <a href="formdata.html">Form Data</a>
+    </nav>
+
+    <h2>Form Data</h2><br>
+
+    Here is the information entered on the previous page: <br>
+
+
+    <script>
+
+        var nameData = localStorage.getItem("name");
+        document.write("Name: " + nameData + "<br>");
+
+        var dobData = localStorage.getItem("dob");
+        document.write("Date of birth: " + dobData + "<br>");
+
+        var addressData = localStorage.getItem("address");
+        document.write("Address: " + addressData + "<br>");
+
+        var pcData = localStorage.getItem("pc");
+        document.write("Post Code: " + pcData + "<br>");
+
+        var emailData = localStorage.getItem("email");
+        document.write("Email: " + emailData + "<br>");
+
+        //console.log(nameData);
+
+    </script>
+
+</body>
+
+
+</html>

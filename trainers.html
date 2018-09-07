@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="data.js"></script>
+    <title>Trainer Search</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Main Page</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="entryform.html">Entry Form</a>
+        <a href="formdata.html">Form Data</a>
+    </nav>
+
+    <h2>Trainer Search</h2><br>
+
+        Search by Name: <br>
+        <input type="text" name="trainerName" id="trainerNameID" placeholder="Enter name"> <br><br>
+        <button type="button" onclick="searchTrainers()">Search</button><br>
+
+        Search by Skill: <br>
+        <input type="text" name="trainerSkill" id="trainerSkillID" placeholder="Enter skill"> <br><br>
+        <button type="button" onclick="searchTrainers()">Search</button><br>
+
+        <p id="resultPara"> </p>
+
+        <p id="skillResult"> </p>
+
+
+        
+    <script>
+
+        var jsonData = data;
+        
+        for(var x in jsonData){
+                    //console.log(jsonData[x]);
+                    //document.write("King Name: " + kingsParse[x].nm + "<br>");
+        }
+
+        tName = "";
+        tAge = "";
+        tIdentity = "";
+        tSkills = "";
+        var skillSearch = "";
+        var skillTrainers = "";
+
+        function searchTrainers(){
+            var results = [];
+            var searchValName = document.getElementById("trainerNameID").value;
+            var searchValSkill = document.getElementById("trainerSkillID").value;
+            
+            var searchRPara = document.getElementById("resultPara");
+            var searchSPara = document.getElementById("skillResult");
+
+            skillTrainers = "";
+
+            
+                var tSquadName = jsonData.squadName;
+                var tSecBase = jsonData.secretBase;
+                var tStatus = jsonData.active;
+                
+
+                // console.log(tSquadName);
+                // console.log(tSecBase);
+                // console.log(tStatus);
+
+                for(var i in jsonData.members){
+                    tName = jsonData.members[i].name;
+                    tAge = jsonData.members[i].age;
+                    tIdentity = jsonData.members[i].secretIdentity;
+                    
+                    // console.log(tName);
+                    // console.log(tAge);
+                    // console.log(tIdentity);
+
+                    for(var y in jsonData.members[i].skills){
+                        skillSearch = jsonData.members[i].skills[y]
+
+                        tSkills = "" + tSkills + jsonData.members[i].skills[y] + ", ";
+
+                        
+
+                        if(skillSearch==searchValSkill){
+                        skillTrainers = "" + skillTrainers  + tName + ", ";
+                        searchSPara.innerHTML = "Trainer Names: " + skillTrainers;
+                        console.log(searchRPara);
+                    }
+                        // console.log(tSkills);
+                    }
+
+                    if(tName==searchValName){
+                        searchRPara.innerHTML = "Trainer Name: " + tName + "<br> Age: " + tAge + "<br> Secret Identity: " + tIdentity + "<br> Skills: " + tSkills + "<br><br>";
+                        //document.write("Trainer Name: " + tName + "<br> Age: " + tAge + "<br> Secret Identity: " + tIdentity + "<br> Skills: " + tSkills + "<br><br>")
+                    } else if(searchValName==""){
+                        searchRPara.innerHTML = " ";
+                    }
+
+                    
+
+                }
+        }
+
+
+        //console.log(dataParse);
+
+    </script>
+
+
+
+</body>
+
+
+</html>
