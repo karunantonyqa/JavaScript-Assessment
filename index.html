@@ -16,20 +16,62 @@
         <a href="formdata.html">Form Data</a>
     </nav>
 
+    <input type="text" id="jsonText" value="JSON">
+    <input type="text" id="formText" value="FORM"><br>
+
     <select id="jsonSelect">
         <option value="">---JSON---</option>
-        <option value="jsonmanipulation">JSON Manipulation</option>
+        <option value="jsonmanipulation" id="jsonManChoice">JSON Manipulation</option>
     </select>
-    <br>
+    
     <select id="formSelect">
         <option value="">---Forms---</option>
-        <option value="entryform">Entry Form</option>
-        <option value="formdata">Form Data</option>
+        <option value="entryform" id="entryFormChoice">Entry Form</option>
+        <option value="formdata" id="formDataChoice">Form Data</option>
     </select>
 
     <script>
+        
+        
+        var isJsonHover = false;
+        var isFormHover = false;
+
         var jsonDrop = document.getElementById("jsonSelect");
         var formDrop = document.getElementById("formSelect");
+
+        jsonDrop.hidden = true;
+        formDrop.hidden = true;
+
+        var jsonTextB = document.getElementById("jsonText");
+        var formTextB = document.getElementById("formText");
+
+        jsonTextB.onmouseover = function(){
+            jsonDrop.hidden = false;
+            
+        }
+
+        formTextB.onmouseover = function(){
+            formDrop.hidden = false;
+            
+        }
+
+        jsonTextB.onmouseleave = function(){
+            setTimeout(1000);
+            //jsonDrop.hidden = true;
+            
+        }
+
+        formTextB.onmouseleave = function(){
+            //formDrop.hidden = true;
+            
+        }
+
+        
+        
+
+        //jsonTextB.hidden = true;
+        
+        console.log(document.all);
 
         
     </script>
